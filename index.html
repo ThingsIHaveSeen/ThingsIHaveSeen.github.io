@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Starter map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map2"></div>
+    <!-- Add jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- MAP SCRIPT -->
+    <script>
+        
+        var myStyle = {
+            setZIndexOffset: (100),
+            "color": "#999999",
+            "weight": 2,
+            "opacity": 1
+        };
+        
+        var myStyle2 = {
+        setZIndexOffset: (100),
+        "color": "#009933",
+        "weight": 2,
+        "opacity": 1
+        };
+    
+        var myStyle3 = {
+        setZIndexOffset: (100),
+        "color": "#e67300",
+        "weight": 2,
+        "opacity": 1
+        };
+        
+        var collegestyle = {
+        radius: 8,
+        setZIndexOffset: (1000),
+        fillColor: "#0099ff",
+        color: "#ffffff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+        }
+        
+    
+        
+        var bus = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/6c9d7002f37f8ee16e0ce612d3765db8/raw/41aab0b659df37f55dc54326bfab64156347ba17/2011_bus9.geojson",
+          dataType: "json",
+          success: console.log("bus successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var bus2 = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/1dfc0f415ea4201267b239ad79ed0858/raw/9d234aa98393ec5cd19392e0399fb2ba1bf381f3/proposed_bus3.geojson",
+          dataType: "json",
+          success: console.log("Proposed bus successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var bike = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/b9318eab7d2b2776fe492b0cd7475369/raw/18a788f94e85fdfd4ab4c83dd7fe6e6aa27c1dc1/proposed_bike.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var colleges = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/6628cd08e92a38ff335482eb7a54d1c3/raw/56adfa74b648d185a9b768419914d1706bb60a5f/colleges.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        
+        
+        $.when(
+        
+        bus,
+        
+        bus2,
+            
+        bike,
+            
+        colleges
+        
+        ).done
+        
+        
+        (function() {
+        
+        var map2 = L.map('map2')
+            .setView([43.017, -83.690], 13);
+        var basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map2);
+       
+       
+       
+        
+        
+            
+        var existingbus = L.geoJSON(bus.responseJSON, {
+            style: myStyle
+        }).addTo(map2);
+            
+        
+        var proposedbus = L.geoJSON(bus2.responseJSON, {
+            style: myStyle2
+        }).addTo(map2);
+            
+        var proposedbike = L.geoJSON(bike.responseJSON, {
+            style: myStyle3
+        }).addTo(map2);
+    
+        
+        var flintcolleges = L.geoJSON(colleges.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, collegestyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup('<div id="popwrap"><b>Institution: </b>' +  feature.properties.Name + '</div><br>' + '<b>Employees: </b></>' + feature.properties.Employees + '</br>' + '<b>Students: </b>' + feature.properties.Students + '</br>');
+           },
+            
+        }).addTo(map2);
+                
+        L.control.layers(null, {
+        "existing bus": existingbus,
+        "proposed bus": proposedbus,
+        "proposed bike": proposedbike,
+        "Colleges": flintcolleges
+        }).addTo(map2);
+        
+        });
+    </script>
+</body>
+
+</html>
