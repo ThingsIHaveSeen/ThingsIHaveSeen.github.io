@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Point 13", "descriptio": "vacant lot", "visibility": -1 }, "geometry": { "type": "Point", "coordinates": [ -83.063030652701798, 42.344724887641199 ] } }
+]
+}
