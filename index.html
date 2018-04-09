@@ -1,33 +1,202 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Starter map</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        #map2 {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Quicksand" rel="stylesheet">
+<meta charset=utf-8 />    
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 
-<body>
-    <div id="map2"></div>
-    <!-- Add jQuery -->
+    
+<style>
+* {
+  box-sizing: border-box;
+}
+    
+#font1 {
+  font-size: 9vw;
+  background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+    }
+    
+    
+#map2container {
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    padding-top: 7px;
+}
+    
+       
+    #map2 {
+    width:100%;
+     height: 60%;
+   
+}
+    
+
+
+    
+.menu {
+  float:left;
+  width:100%;
+  text-align:center;
+}
+.menu a {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, red, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+  border: 2px solid white;
+  border-radius: 8px;
+  padding:8px;
+  margin-top:7px;
+  margin-bottom: 7px;
+  display:block;
+  width:100%;
+  color: white;
+  text-decoration: none;
+}
+
+.menu2 {
+  float:left;
+  width:100%;
+  text-align:center;
+}
+    
+
+    */
+    
+.menu2 a {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, red, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+    padding: 8px;
+    margin-top: 7px;
+    display: block;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    
+    border-radius: 8px;
+}    
+    
+    
+    
+    
+    
+    
+    
+    
+.title {
+  float:left;
+  width:20%;
+  text-align:left;
+  background-color:black;
+  border: 0px solid black;
+  padding:8px;
+  margin-top:7px;
+  margin-bottom:7px;
+  display:block;
+  width:100%;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+    
+.text {
+  float:left;
+  width:100%;
+  text-align:left;
+  background-color:transparent;
+  border: 0px solid black;
+  padding:8px;
+  margin-top:7px;
+  margin-bottom:7px;
+  display:block;
+  width:100%;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+    
+
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  background-color:#e5e5e5;
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:7px;
+  margin-right:3px;
+  text-align:center;
+}
+    
+
+    
+
+
+
+
+
+
+
+    
+
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+
+
+
+</style>
+</head>
+<body style="font-family:Montserrat;color:black;">
+
+<div style="background-color: transparent;
+            padding:15px;text-align:left;">
+  <div id="font1">
+    <b>
+  Things I Have Seen
+    </b>
+</div>
+</div>
+
+<div style="overflow:auto">
+
+ <div class="menu">
+     <a href="file:///C:/Users/Michael/Desktop/A_Portfolio/Home%20and%20Work%20and%20Maps/Work3.html"><b>Connect</b></a>
+     <a href=""><b>More Posts</b></a>      
+ </div>
+    
+ 
+    
+<div id="map2container">
+    <div id='map2'></div>
+</div>
+        
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    <!-- MAP SCRIPT -->
-    <script>
-        
-        var myStyle = {
+    
+
+    
+ 
+</div>
+    
+<script>
+    
+ var myStyle = {
             setZIndexOffset: (100),
             "color": "#999999",
             "weight": 2,
@@ -48,7 +217,7 @@
         "opacity": 1
         };
         
-        var collegestyle = {
+        var mrkrstyle = {
         radius: 8,
         setZIndexOffset: (1000),
         fillColor: "#0099ff",
@@ -58,28 +227,42 @@
         fillOpacity: 0.8
         }
         
-    
+        var photoImg = '<img src="https://imgur.com/MJeejBC.jpeg" height="150px" width="266px"/>';
         
-        var bus = $.ajax({
-          url:"https://gist.githubusercontent.com/Mstepniak48201/6c9d7002f37f8ee16e0ce612d3765db8/raw/41aab0b659df37f55dc54326bfab64156347ba17/2011_bus9.geojson",
-          dataType: "json",
-          success: console.log("bus successfully loaded."),
-          error: function (xhr) {
-            alert(xhr.statusText)
-          }
-        })
+        var photoImg2 = '<img src="https://i.imgur.com/RJ35ZmG.jpg" height="150px" width="266px"/>';
         
-        var bus2 = $.ajax({
-          url:"https://gist.githubusercontent.com/Mstepniak48201/1dfc0f415ea4201267b239ad79ed0858/raw/9d234aa98393ec5cd19392e0399fb2ba1bf381f3/proposed_bus3.geojson",
-          dataType: "json",
-          success: console.log("Proposed bus successfully loaded."),
-          error: function (xhr) {
-            alert(xhr.statusText)
-          }
-        })
+        var photoImg3 = '<img src="https://i.imgur.com/T4X5hQK.jpg" height="150px" width="266px"/>';
         
-        var bike = $.ajax({
-          url:"https://gist.githubusercontent.com/Mstepniak48201/b9318eab7d2b2776fe492b0cd7475369/raw/18a788f94e85fdfd4ab4c83dd7fe6e6aa27c1dc1/proposed_bike.geojson",
+        var photoImg4 = '<img src="https://i.imgur.com/HlApXR9.jpg" height="150px" width="266px"/>';
+        
+        var photoImg5 = '<img src="https://i.imgur.com/UMS7AbG.jpg" height="150px" width="84px"/>';
+        
+        var photoImg6 = '<img src="https://i.imgur.com/7Y1Zcpi.jpg" height="150px" width="266px"/>';
+        
+        var photoImg7 = '<img src="https://i.imgur.com/JaEimLd.jpg" height="150px" width="266px"/>';
+        
+        var photoImg8 = '<img src="https://i.imgur.com/gTpImSe.jpg" height="150px" width="266px"/>';
+        
+        var photoImg9 = '<img src="https://i.imgur.com/DRPtOwG.jpg" height="150px" width="266px"/>';
+        
+        var photoImg10 = '<img src="https://i.imgur.com/HlApXR9.jpg" height="150px" width="266px"/>';
+        
+        var photoImg11 = '<img src="https://i.imgur.com/KZWfnXh.jpg" height="150px" width="266px"/>';
+        
+        var photoImg12 = '<img src="https://i.imgur.com/SK69V4C.jpg" height="150px" width="266px"/>';
+        
+        var photoImg13 = '<img src="https://i.imgur.com/EUWnoOT.jpg" height="150px" width="266px"/>';
+        
+        var photoImg14 = '<img src="https://i.imgur.com/rwAQ6fo.jpg" height="150px" width="266px"/>';
+        
+        var photoImg15 = '<img src="https://i.imgur.com/I3yF8dr.jpg" height="150px" width="266px"/>';
+        
+        var photoImg16 = '<img src="https://i.imgur.com/BPbbi2k.jpg" height="150px" width="266px"/>';
+
+       
+        
+        var one = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/7e54b3c5ff2210aee9dd5f97ea816335/raw/c05ea1c52f80fe8b6a04cf4f213eb27ce41f0df7/mlk_wood.geojson",
           dataType: "json",
           success: console.log("Proposed bike successfully loaded."),
           error: function (xhr) {
@@ -87,26 +270,180 @@
           }
         })
         
-        var colleges = $.ajax({
-          url:"https://gist.githubusercontent.com/Mstepniak48201/6628cd08e92a38ff335482eb7a54d1c3/raw/56adfa74b648d185a9b768419914d1706bb60a5f/colleges.geojson",
+        var two = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/61b677dc0c47b2ce22050460c1977ab0/raw/41382cd77660b28b7b7dab9fc6e19070bc8379de/mlk_park.geojson",
           dataType: "json",
           success: console.log("Proposed bike successfully loaded."),
           error: function (xhr) {
             alert(xhr.statusText)
           }
         })
+        
+        var three = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/ecaf34e8a7a7aba0be03eb8641d9c704/raw/331dc2acd9419f8ef814227244050095d17d7b99/mlk_2nd.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var four = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/c233751b4fe4ddb3620d40100dc24097/raw/1382607435a3fa311c723e35732130bb9fb8ba79/live_N.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var five = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/e534a6590b25170990d39ed55ddfdfa4/raw/6330186d95f009b36f068387db5ffd3f5a243d2e/land_S.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var six = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/5f2a1385dae2588f177589d4c173156b/raw/c2a75a6c89c6e46e8b85410f198c3354194833b9/land_N.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var seven = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/ffeae5e53f45b2e5ce0a269b1ba4f33a/raw/d6eb9983e0122d07ed440329be49ff5da3dee1a6/johns_W.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var eight = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/05ea9cce9c15bb37600d1378667cf889/raw/3de464142b161d545867eb55afa7e6c7e5133b8e/johns_E.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var nine = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/81ca26411a710035a17d2bf311a6d493/raw/694641c088727901c831347359e40a80cad4d2c9/hammernail.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var ten = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/9f8f05f364b35a3a2835685f7095ebee/raw/f993c64388c3dbc1eceb26b21ecfc5dbb08456b3/cass_pete.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var eleven = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/1a10bc22246e18f82a6c82e063fd8c45/raw/b1d98e0fb692af9376dfd27feac2ad414b229e15/cass_char.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var twelve = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/869261945a81c30e92d746894b5013ab/raw/746b72e886cccda37b9e9d1fd32413ba5942cff1/Alexandrine.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var thirteen = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/4e344cb43e314c918dda8c28a7a98a1c/raw/6b46fd31103d1b317a012bf44df51cec6d88f696/2nd_pete.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var fourteen = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/fafffcb57828f0f15c6c2d12044b7470/raw/0af8ca172159467d5202388b3e1d03655e23cbef/2nd_char.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var fifteen = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/a69576daf7e60bc93ef953f2539614ea/raw/eb03d97fdded62afce416557da6035ef608b4aba/2nd_pete_NW.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        var sixteen = $.ajax({
+          url:"https://gist.githubusercontent.com/Mstepniak48201/651caf003a0c73d00c061c2aabc81d4f/raw/8b7beeb73d014b91a62f2ae3e4ed6a49c9504204/2nd_pete_NE.geojson",
+          dataType: "json",
+          success: console.log("Proposed bike successfully loaded."),
+          error: function (xhr) {
+            alert(xhr.statusText)
+          }
+        })
+        
+        
+        
+       
         
         
         
         $.when(
-        
-        bus,
-        
-        bus2,
             
-        bike,
+        one,
             
-        colleges
+        two,
+            
+        three,
+            
+        four,
+            
+        five,
+            
+        six,
+            
+        seven,
+            
+        eight,
+            
+        nine,
+            
+        ten,
+            
+        eleven,
+            
+        twelve,
+            
+        thirteen,
+            
+        fourteen,
+            
+        fifteen,
+            
+        sixteen
         
         ).done
         
@@ -114,51 +451,192 @@
         (function() {
         
         var map2 = L.map('map2')
-            .setView([43.017, -83.690], 13);
-        var basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-            subdomains: 'abcd',
-            maxZoom: 19
-        }).addTo(map2);
-       
-       
-       
+            .setView([42.344858, -83.058953], 15);
+        var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         
+    tileSize: 512,
+    zoomOffset: -1,
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map2); 
+           
+            /*
+           L.tileLayer('https://api.mapbox.com/styles/v1/mstepniak/cjaxcyd4530cp2slbwbtk8dmk/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibXN0ZXBuaWFrIiwiYSI6ImNpbXF6eHZnNDAwdGF2aG00bHJtbWFweTkifQ.7xXe45mpEC-L6e8kh1fJvA', {
         
+            tileSize: 512,
+            zoomOffset: -1,
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map2);
+           */ 
             
-        var existingbus = L.geoJSON(bus.responseJSON, {
-            style: myStyle
-        }).addTo(map2);
-            
-        
-        var proposedbus = L.geoJSON(bus2.responseJSON, {
-            style: myStyle2
-        }).addTo(map2);
-            
-        var proposedbike = L.geoJSON(bike.responseJSON, {
-            style: myStyle3
-        }).addTo(map2);
-    
-        
-        var flintcolleges = L.geoJSON(colleges.responseJSON,{
+          
+         var mrkr1 = L.geoJSON(one.responseJSON,{
             pointToLayer: function (feature, latlng){
-            return L.circleMarker(latlng, collegestyle);
+            return L.circleMarker(latlng, mrkrstyle);
             },
             onEachFeature: function (feature, layer){
-            layer.bindPopup('<div id="popwrap"><b>Institution: </b>' +  feature.properties.Name + '</div><br>' + '<b>Employees: </b></>' + feature.properties.Employees + '</br>' + '<b>Students: </b>' + feature.properties.Students + '</br>');
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg);
+           },
+            
+        }).addTo(map2);   
+        
+        var mrkr2 = L.geoJSON(two.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg2);
+           },
+            
+        }).addTo(map2);  
+            
+        var mrkr3 = L.geoJSON(three.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg3);
            },
             
         }).addTo(map2);
-                
-        L.control.layers(null, {
-        "existing bus": existingbus,
-        "proposed bus": proposedbus,
-        "proposed bike": proposedbike,
-        "Colleges": flintcolleges
+            
+        var mrkr4 = L.geoJSON(four.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg4);
+           },
+            
         }).addTo(map2);
+            
+         var mrkr5 = L.geoJSON(five.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg5);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr6 = L.geoJSON(six.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg6);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr7 = L.geoJSON(seven.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg7);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr8 = L.geoJSON(eight.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg8);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr9 = L.geoJSON(nine.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg9);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr10 = L.geoJSON(ten.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center>My Photo </center>" + "</br>"+ photoImg10);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr11 = L.geoJSON(eleven.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg11);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr12 = L.geoJSON(twelve.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg12);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr13 = L.geoJSON(thirteen.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg13);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr14 = L.geoJSON(fourteen.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center></center>" + "</br>"+ photoImg14);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr15 = L.geoJSON(fifteen.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg15);
+           },
+            
+        }).addTo(map2);
+            
+        var mrkr16 = L.geoJSON(sixteen.responseJSON,{
+            pointToLayer: function (feature, latlng){
+            return L.circleMarker(latlng, mrkrstyle);
+            },
+            onEachFeature: function (feature, layer){
+            layer.bindPopup("<center> </center>" + "</br>"+ photoImg16);
+           },
+            
+        }).addTo(map2);
+       
+       
+       
+        
+        
+        
         
         });
-    </script>
+    
+</script>
 </body>
-
 </html>
